@@ -1,7 +1,5 @@
-/*  This is the  backend of the vegaby app. (NodeJS) 
-  It gets API Keys from the environment.
-  It listens for requests from the frontend.
-  It fetches Data from Yelp and forwards it to the frontend.
+/*  This is the  backend of the After Hours Application. (NodeJS).
+  It fetches API keys and Data from SeatGeek and forwards it to the frontend.
 */
 
 const dotenv = require('dotenv').config()
@@ -22,7 +20,7 @@ app.use( cors() ); // make express attach CORS headers to responses
 app.use( express.json() ); // add json capabilities to our express aptestingp
 
 /* Serve up static assets, i.e. the Frontend of the site. */
-app.use(ROOT_URL+'/events?client_id=MjYyMzMzODR8MTY0ODAxMjAwNy4xMjM5ODE3&q=concert', express.static('public'))  
+app.use(ROOT_URL+'/', express.static('public'))  
 
 /* The frontend may request the Google API Key via this endpoint. */
 app.get(ROOT_URL+'/AIzaSyCtrn0z-_uXUiN9MNkzzE6IAP5Qr4gJbko', (req,res) => {
@@ -71,3 +69,4 @@ app.post(ROOT_URL+'/events?client_id=MjYyMzMzODR8MTY0ODAxMjAwNy4xMjM5ODE3&q=conc
 app.listen(PORT,  () => {
   console.log("We are live " );
 });
+
